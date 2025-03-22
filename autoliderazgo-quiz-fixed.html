@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autoevaluación de Autoliderazgo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    h2 {
+      color: #3498db;
+      margin-top: 30px;
+    }
+    h3 {
+      color: #e67e22;
+    }
+    .question-group {
+      background-color: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 10px;
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 5px;
+      flex-wrap: wrap;
+    }
+    .options label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+    }
+    input[type="radio"] {
+      margin-bottom: 5px;
+    }
+    #results {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: none;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .result-category {
+      margin-bottom: 15px;
+    }
+    .result-bar {
+      height: 20px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+    .result-fill {
+      height: 100%;
+      background-color: #3498db;
+    }
+    .result-value {
+      font-weight: bold;
+      text-align: right;
+    }
+    .strength {
+      background-color: #2ecc71;
+    }
+    .moderate {
+      background-color: #f39c12;
+    }
+    .weakness {
+      background-color: #e74c3c;
+    }
+    .action-plan {
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+    .print-button {
+      background-color: #2c3e50;
+    }
+    .interpretation {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    @media (max-width: 600px) {
+      .options {
+        justify-content: space-around;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Autoevaluación de Autoliderazgo</h1>
+  
+  <div class="instructions">
+    <p>Responde cada afirmación según tu nivel de acuerdo, utilizando la siguiente escala:</p>
+    <ul>
+      <li><strong>1:</strong> Totalmente en desacuerdo</li>
+      <li><strong>2:</strong> En desacuerdo</li>
+      <li><strong>3:</strong> Neutral</li>
+      <li><strong>4:</strong> De acuerdo</li>
+      <li><strong>5:</strong> Totalmente de acuerdo</li>
+    </ul>
+  </div>
+
+  <form id="quizForm">
+    <!-- Autoconocimiento -->
+    <div class="question-group">
+      <h3>1. Autoconocimiento</h3>
+      
+      <div class="question">
+        <p>a. Reconozco mis fortalezas personales y trabajo en desarrollarlas.</p>
+        <div class="options">
+          <label><input type="radio" name="q1a" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q1a" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q1a" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q1a" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q1a" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>b. Identifico mis debilidades y busco maneras de mejorarlas.</p>
+        <div class="options">
+          <label><input type="radio" name="q1b" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q1b" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q1b" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q1b" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q1b" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>c. Soy consciente de cómo mis emociones afectan mis decisiones.</p>
+        <div class="options">
+          <label><input type="radio" name="q1c" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q1c" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q1c" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q1c" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q1c" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Autogestión Emocional -->
+    <div class="question-group">
+      <h3>2. Autogestión Emocional</h3>
+      
+      <div class="question">
+        <p>a. Manejo el estrés de manera efectiva en situaciones desafiantes.</p>
+        <div class="options">
+          <label><input type="radio" name="q2a" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q2a" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q2a" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q2a" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q2a" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>b. Mantengo la calma bajo presión y tomo decisiones racionales.</p>
+        <div class="options">
+          <label><input type="radio" name="q2b" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q2b" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q2b" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q2b" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q2b" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>c. Me adapto fácilmente a cambios inesperados sin perder el control.</p>
+        <div class="options">
+          <label><input type="radio" name="q2c" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q2c" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q2c" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q2c" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q2c" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Automotivación -->
+    <div class="question-group">
+      <h3>3. Automotivación</h3>
+      
+      <div class="question">
+        <p>a. Establezco metas personales y trabajo consistentemente para alcanzarlas.</p>
+        <div class="options">
+          <label><input type="radio" name="q3a" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q3a" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q3a" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q3a" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q3a" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>b. Encuentro motivación interna para superar obstáculos.</p>
+        <div class="options">
+          <label><input type="radio" name="q3b" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q3b" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q3b" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q3b" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q3b" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>c. Busco oportunidades de crecimiento personal y profesional de manera proactiva.</p>
+        <div class="options">
+          <label><input type="radio" name="q3c" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q3c" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q3c" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q3c" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q3c" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Autoestima -->
+    <div class="question-group">
+      <h3>4. Autoestima</h3>
+      
+      <div class="question">
+        <p>a. Confío en mis habilidades para enfrentar desafíos.</p>
+        <div class="options">
+          <label><input type="radio" name="q4a" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q4a" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q4a" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q4a" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q4a" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>b. Me valoro y respeto a mí misma, independientemente de las opiniones externas.</p>
+        <div class="options">
+          <label><input type="radio" name="q4b" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q4b" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q4b" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q4b" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q4b" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>c. Reconozco y celebro mis logros, por pequeños que sean.</p>
+        <div class="options">
+          <label><input type="radio" name="q4c" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q4c" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q4c" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q4c" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q4c" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Autonomía -->
+    <div class="question-group">
+      <h3>5. Autonomía</h3>
+      
+      <div class="question">
+        <p>a. Tomo decisiones por mí misma sin depender excesivamente de la aprobación de otros.</p>
+        <div class="options">
+          <label><input type="radio" name="q5a" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q5a" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q5a" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q5a" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q5a" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>b. Asumo la responsabilidad de mis acciones y sus consecuencias.</p>
+        <div class="options">
+          <label><input type="radio" name="q5b" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q5b" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q5b" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q5b" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q5b" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>c. Me siento cómoda iniciando proyectos o tareas sin necesidad de supervisión constante.</p>
+        <div class="options">
+          <label><input type="radio" name="q5c" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q5c" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q5c" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q5c" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q5c" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Autodisciplina -->
+    <div class="question-group">
+      <h3>6. Autodisciplina</h3>
+      
+      <div class="question">
+        <p>a. Cumplo con mis compromisos y responsabilidades de manera consistente.</p>
+        <div class="options">
+          <label><input type="radio" name="q6a" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q6a" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q6a" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q6a" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q6a" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>b. Evito procrastinar y gestiono mi tiempo eficientemente.</p>
+        <div class="options">
+          <label><input type="radio" name="q6b" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q6b" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q6b" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q6b" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q6b" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>c. Mantengo hábitos saludables que apoyan mi bienestar físico y mental.</p>
+        <div class="options">
+          <label><input type="radio" name="q6c" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q6c" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q6c" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q6c" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q6c" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Visión Personal -->
+    <div class="question-group">
+      <h3>7. Visión Personal</h3>
+      
+      <div class="question">
+        <p>a. Tengo una visión clara de lo que quiero lograr a largo plazo.</p>
+        <div class="options">
+          <label><input type="radio" name="q7a" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q7a" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q7a" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q7a" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q7a" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>b. Mis acciones diarias están alineadas con mis objetivos futuros.</p>
+        <div class="options">
+          <label><input type="radio" name="q7b" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q7b" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q7b" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q7b" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q7b" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p>c. Reevalúo y ajusto regularmente mis metas para asegurarme de que siguen siendo relevantes.</p>
+        <div class="options">
+          <label><input type="radio" name="q7c" value="1" required>1<br>Totalmente en desacuerdo</label>
+          <label><input type="radio" name="q7c" value="2">2<br>En desacuerdo</label>
+          <label><input type="radio" name="q7c" value="3">3<br>Neutral</label>
+          <label><input type="radio" name="q7c" value="4">4<br>De acuerdo</label>
+          <label><input type="radio" name="q7c" value="5">5<br>Totalmente de acuerdo</label>
+        </div>
+      </div>
+    </div>
+    
+    <button type="submit" id="submitBtn">Calcular Resultados</button>
+  </form>
+  
+  <div id="results">
+    <h2>Resultados de tu Autoevaluación</h2>
+    
+    <h3>Puntuación Total: <span id="totalScore"></span>/105</h3>
+    <div class="interpretation" id="totalInterpretation"></div>
+    
+    <h3>Resultados por Pilares</h3>
+    
+    <div class="result-category">
+      <h4>1. Autoconocimiento: <span id="score1" class="result-value"></span>/15</h4>
+      <div class="result-bar">
+        <div id="bar1" class="result-fill"></div>
+      </div>
+      <div class="interpretation" id="interpretation1"></div>
+    </div>
+    
+    <div class="result-category">
+      <h4>2. Autogestión Emocional: <span id="score2" class="result-value"></span>/15</h4>
+      <div class="result-bar">
+        <div id="bar2" class="result-fill"></div>
+      </div>
+      <div class="interpretation" id="interpretation2"></div>
+    </div>
+    
+    <div class="result-category">
+      <h4>3. Automotivación: <span id="score3" class="result-value"></span>/15</h4>
+      <div class="result-bar">
+        <div id="bar3" class="result-fill"></div>
+      </div>
+      <div class="interpretation" id="interpretation3"></div>
+    </div>
+    
+    <div class="result-category">
+      <h4>4. Autoestima: <span id="score4" class="result-value"></span>/15</h4>
+      <div class="result-bar">
+        <div id="bar4" class="result-fill"></div>
+      </div>
+      <div class="interpretation" id="interpretation4"></div>
+    </div>
+    
+    <div class="result-category">
+      <h4>5. Autonomía: <span id="score5" class="result-value"></span>/15</h4>
+      <div class="result-bar">
+        <div id="bar5" class="result-fill"></div>
+      </div>
+      <div class="interpretation" id="interpretation5"></div>
+    </div>
+    
+    <div class="result-category">
+      <h4>6. Autodisciplina: <span id="score6" class="result-value"></span>/15</h4>
+      <div class="result-bar">
+        <div id="bar6" class="result-fill"></div>
+      </div>
+      <div class="interpretation" id="interpretation6"></div>
+    </div>
+    
+    <div class="result-category">
+      <h4>7. Visión Personal: <span id="score7" class="result-value"></span>/15</h4>
+      <div class="result-bar">
+        <div id="bar7" class="result-fill"></div>
+      </div>
+      <div class="interpretation" id="interpretation7"></div>
+    </div>
+    
+    <div class="action-plan">
+      <h3>Fortalezas y Áreas de Oportunidad</h3>
+      
+      <h4>Tus Fortalezas Principales:</h4>
+      <ol id="strengths"></ol>
+      
+      <h4>Tus Áreas de Oportunidad:</h4>
+      <ol id="weaknesses"></ol>
+      
+      <h4>Recomendaciones para el Desarrollo:</h4>
+      <div id="recommendations"></div>
+    </div>
+    
+    <button id="printBtn" class="print-button">Guardar o Imprimir Resultados</button>
+  </div>
+
+  <script>
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateResults();
+    });
+
+    document.getElementById('printBtn').addEventListener('click', function() {
+      window.print();
+    });
+
+    function calculateResults() {
+      // Definir los pilares
+      const pilares = [
+        "Autoconocimiento",
+        "Autogestión Emocional",
+        "Automotivación",
+        "Autoestima",
+        "Autonomía",
+        "Autodisciplina",
+        "Visión Personal"
+      ];
+      
+      // Calcular puntajes por pilar
+      const scores = [];
+      let totalScore = 0;
+      
+      for (let i = 1; i <= 7; i++) {
+        const a = parseInt(document.querySelector(`input[name="q${i}a"]:checked`).value);
+        const b = parseInt(document.querySelector(`input[name="q${i}b"]:checked`).value);
+        const c = parseInt(document.querySelector(`input[name="q${i}c"]:checked`).value);
+        
+        const pilarScore = a + b + c;
+        scores.push({
+          pilar: pilares[i-1],
+          score: pilarScore,
+          index: i
+        });
+        
+        totalScore += pilarScore;
+        
+        // Mostrar puntaje del pilar
+        document.getElementById(`score${i}`).textContent = pilarScore;
+        
+        // Actualizar barra de progreso
+        const percentage = (pilarScore / 15) * 100;
+        const bar = document.getElementById(`bar${i}`);
+        bar.style.width = `${percentage}%`;
+        
+        // Asignar clase según nivel
+        if (pilarScore >= 13) {
+          bar.className = "result-fill strength";
+          document.getElementById(`interpretation${i}`).textContent = "Fortaleza en este pilar";
+        } else if (pilarScore >= 9) {
+          bar.className = "result-fill moderate";
+          document.getElementById(`interpretation${i}`).textContent = "Área con potencial de mejora";
+        } else {
+          bar.className = "result-fill weakness";
+          document.getElementById(`interpretation${i}`).textContent = "Área que requiere atención y desarrollo";
+        }
+      }
+      
+      // Mostrar puntaje total
+      document.getElementById('totalScore').textContent = totalScore;
+      
+      // Interpretación del puntaje total
+      const totalInterpretation = document.getElementById('totalInterpretation');
+      if (totalScore >= 85) {
+        totalInterpretation.textContent = "Alto nivel de autoliderazgo. Posees una excelente capacidad para liderarte a ti misma.";
+      } else if (totalScore >= 65) {
+        totalInterpretation.textContent = "Nivel moderado de autoliderazgo; hay áreas específicas donde puedes enfocar tu desarrollo.";
+      } else {
+        totalInterpretation.textContent = "Bajo nivel de autoliderazgo; se recomienda trabajar en múltiples áreas para fortalecer tu capacidad de liderazgo personal.";
+      }
+      
+      // Ordenar fortalezas y debilidades
+      scores.sort((a, b) => b.score - a.score);
+      
+      // Mostrar fortalezas (los 3 mejores)
+      const strengths = document.getElementById('strengths');
+      strengths.innerHTML = '';
+      
+      for (let i = 0; i < Math.min(3, scores.length); i++) {
+        const li = document.createElement('li');
+        li.textContent = `${scores[i].pilar} (${scores[i].score}/15)`;
+        strengths.appendChild(li);
+      }
+      
+      // Mostrar debilidades (los 3 peores)
+      const sortedWeaknesses = [...scores].sort((a, b) => a.score - b.score);
+      const weaknesses = document.getElementById('weaknesses');
+      weaknesses.innerHTML = '';
+      
+      for (let i = 0; i < Math.min(3, sortedWeaknesses.length); i++) {
+        const li = document.createElement('li');
+        li.textContent = `${sortedWeaknesses[i].pilar} (${sortedWeaknesses[i].score}/
